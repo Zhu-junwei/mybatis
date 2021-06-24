@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjw.dao.IUserDao">
+
+    <!--开启user支持二级缓存-->
+    <cache/>
+
+    <!--查询所有-->
+    <select id="findAll"  resultType="User">
+        select * from user ;
+    </select>
+
+    <!--根据id查询用户 (查询支持cache)
+        好像开启了cache就不用配置useCache了，默认就是true
+    -->
+    <select id="findById" resultType="User" parameterType="Integer" flushCache="true">
+        select * from user u where u.id = #{userId}
+    </select>
+
+
+</mapper>
