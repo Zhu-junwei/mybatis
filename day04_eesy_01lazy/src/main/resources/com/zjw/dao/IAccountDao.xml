@@ -5,9 +5,9 @@
 <mapper namespace="com.zjw.dao.IAccountDao">
 
     <resultMap id="accountUserMap" type="Account">
-        <id property="id" column="id"></id>
-        <result property="uid" column="uid"></result>
-        <result property="money" column="money"></result>
+        <id property="id" column="id"/>
+        <result property="uid" column="uid"/>
+        <result property="money" column="money"/>
 
         <!-- <association property="user" javaType="User">
             <id property="id" column="id"></id>

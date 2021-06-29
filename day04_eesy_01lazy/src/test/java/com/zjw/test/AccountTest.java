@@ -4,7 +4,6 @@ import com.zjw.dao.IAccountDao;
 import com.zjw.dao.IUserDao;
 import com.zjw.domain.Account;
 import com.zjw.domain.AccountUser;
-import com.zjw.domain.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -14,7 +13,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AccountTest {
@@ -40,7 +38,7 @@ public class AccountTest {
     }
 
     @After
-    public void destory() throws Exception{
+    public void destroy() throws Exception{
         session.commit();
         session.close();
         in.close();
@@ -54,11 +52,13 @@ public class AccountTest {
 
         //使用代理对象执行方法
         List<Account> accounts = accountDao.findAll();
-//        for (Account account : accounts) {
-//            System.out.println("每个account的信息");
-//            System.out.println(account);
+        for (Account account : accounts) {
+            System.out.println("每个account的信息");
+            System.out.println(account.getId());
+            System.out.println(account.getUid());
+            System.out.println(account.getMoney());
 //            System.out.println(account.getUser());
-//        }
+        }
     }
 
     /**
