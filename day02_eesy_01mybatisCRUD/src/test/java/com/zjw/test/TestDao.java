@@ -39,7 +39,7 @@ public class TestDao {
     }
 
     @After
-    public void destory() throws Exception{
+    public void destroy() throws Exception{
         session.commit();
         session.close();
         in.close();
@@ -121,8 +121,8 @@ public class TestDao {
      * 测试查询用户
      */
     @Test
-    public void testfindById(){
-        User user = userDao.findById(50);
+    public void testFindById(){
+        User user = userDao.findById(59);
         System.out.println(user);
     }
 
@@ -132,9 +132,12 @@ public class TestDao {
     @Test
     public void testFindByName(){
         //使用#{} , 需要加%
-//        List<User> userList = userDao.findByName("%王%");
-        //使用${} , 不用加%
-        List<User> userList = userDao.findByName("王");
+        List<User> userList = userDao.findByName("%王%");
+
+        //使用${} , 不用加% 有sql注入的风险
+//        List<User> userList = userDao.findByName("王");
+        //SQL注入
+//        List<User> userList = userDao.findByName("王%' or '1%' = '1");
         for (User user : userList) {
             System.out.println(user);
         }
