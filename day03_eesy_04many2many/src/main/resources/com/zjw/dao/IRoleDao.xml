@@ -5,16 +5,16 @@
 <mapper namespace="com.zjw.dao.IRoleDao">
 
     <resultMap id="RoleMap" type="Role">
-       <id property="roleId" column="rid"></id>
-        <result property="roleName" column="role_name"></result>
-        <result property="roleDesc" column="role_desc"></result>
+        <id property="roleId" column="rid"/>
+        <result property="roleName" column="role_name"/>
+        <result property="roleDesc" column="role_desc"/>
 
         <collection property="users" ofType="user">
-            <id property="id" column="id"></id>
-            <result property="address" column="address"></result>
-            <result property="username" column="username"></result>
-            <result property="sex" column="sex"></result>
-            <result property="birthday" column="birthday"></result>
+            <id property="id" column="id"/>
+            <result property="address" column="address"/>
+            <result property="username" column="username"/>
+            <result property="sex" column="sex"/>
+            <result property="birthday" column="birthday"/>
 
         </collection>
     </resultMap>

@@ -1,9 +1,7 @@
 package com.zjw.test;
 
 import com.zjw.dao.IRoleDao;
-import com.zjw.dao.IUserDao;
 import com.zjw.domain.Role;
-import com.zjw.domain.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -37,7 +35,7 @@ public class RoleTest {
     }
 
     @After
-    public void destory() throws Exception{
+    public void destroy() throws Exception{
         session.commit();
         session.close();
         in.close();
