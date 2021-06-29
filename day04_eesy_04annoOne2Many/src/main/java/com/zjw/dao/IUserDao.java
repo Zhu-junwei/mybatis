@@ -11,7 +11,7 @@ import java.util.List;
  * @Select @Insert @Update @Delete
  */
 
-@CacheNamespace(blocking = true)//mybatis 基于注解方式实现配置二级缓存
+//@CacheNamespace(blocking = true)//mybatis 基于注解方式实现配置二级缓存
 public interface IUserDao {
 
     /**

@@ -12,7 +12,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 
 public class SecondLevelCatchTest {
 
@@ -42,17 +41,17 @@ public class SecondLevelCatchTest {
     @Test
     public void testFindById(){
         //第一次查询数据库
-        User user = userDao.findById(54);
-        System.out.println(user);
+        User user = userDao.findById(41);
+//        System.out.println(user.toString());
 
         session.close();
         session = factory.openSession();
         IUserDao userDao = session.getMapper(IUserDao.class);
         //第二次用cache中取值
-        User user2 = userDao.findById(54);
-        System.out.println(user2);
+        User user2 = userDao.findById(41);
+//        System.out.println(user2.toString());
 
-        System.out.println(user == user2);
+//        System.out.println(user == user2);
 
         session.commit();
         session.close();
