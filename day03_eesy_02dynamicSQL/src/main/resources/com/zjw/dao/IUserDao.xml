@@ -67,7 +67,7 @@
         select * from user
         <where>
             <if test="ids != null and ids.size()>0">
-                <foreach collection="ids" open="and id in (" close=")" separator="," item="uid">
+                <foreach collection="ids" open="and id in (" item="uid" separator="," close=")" >
                     #{uid}
                 </foreach>
             </if>
