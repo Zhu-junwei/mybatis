@@ -5,16 +5,16 @@
 <mapper namespace="com.zjw.dao.IUserDao">
 
     <resultMap id="UserAccountMap" type="User">
-        <id property="id" column="id"></id>
-        <result property="address" column="address"></result>
-        <result property="username" column="username"></result>
-        <result property="sex" column="sex"></result>
-        <result property="birthday" column="birthday"></result>
+        <id property="id" column="id"/>
+        <result property="address" column="address"/>
+        <result property="username" column="username"/>
+        <result property="sex" column="sex"/>
+        <result property="birthday" column="birthday"/>
 
         <collection property="accounts" ofType="Account">
-            <id property="id" column="aid"></id>
-            <result property="uid" column="uid"></result>
-            <result property="money" column="money"></result>
+            <id property="id" column="aid"/>
+            <result property="uid" column="uid"/>
+            <result property="money" column="money"/>
         </collection>
     </resultMap>
     

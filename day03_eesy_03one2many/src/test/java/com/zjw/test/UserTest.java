@@ -1,9 +1,7 @@
 package com.zjw.test;
 
-import com.zjw.dao.IAccountDao;
 import com.zjw.dao.IUserDao;
 import com.zjw.domain.Account;
-import com.zjw.domain.AccountUser;
 import com.zjw.domain.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -38,7 +36,7 @@ public class UserTest {
     }
 
     @After
-    public void destory() throws Exception{
+    public void destroy() throws Exception{
         session.commit();
         session.close();
         in.close();
