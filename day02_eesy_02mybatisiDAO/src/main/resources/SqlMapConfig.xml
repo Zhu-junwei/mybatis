@@ -12,7 +12,7 @@
             <!--     配置连接池       -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/eesy?serviceTimezone=Asia/Shanghai&amp;useSSL=false"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/eesy?serverTimezone=Asia/Shanghai&amp;useSSL=false"/>
                 <property name="username" value="root"/>
                 <property name="password" value="123456"/>
             </dataSource>
