@@ -36,7 +36,7 @@ public class TestDao {
     }
 
     @After
-    public void destory() throws Exception{
+    public void destroy() throws Exception{
         //释放资源
         in.close();
     }

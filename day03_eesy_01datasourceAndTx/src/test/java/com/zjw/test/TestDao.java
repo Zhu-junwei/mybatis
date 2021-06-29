@@ -39,7 +39,7 @@ public class TestDao {
     }
 
     @After
-    public void destory() throws Exception{
+    public void destroy() throws Exception{
 //        session.commit();
         session.close();
         in.close();
@@ -119,7 +119,7 @@ public class TestDao {
      * 测试查询用户
      */
     @Test
-    public void testfindById(){
+    public void testFindById(){
         User user = userDao.findById(50);
         System.out.println(user);
     }
