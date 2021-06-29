@@ -12,7 +12,6 @@ import org.junit.Test;
 
 import java.io.InputStream;
 import java.util.List;
-import java.util.Objects;
 
 public class UserTest {
 
@@ -75,7 +74,8 @@ public class UserTest {
 
     /**
      * 测试一级缓存
-     * 关闭session可以清空一级缓存
+     * 一级缓存失效四种情况：1、不是同一个session
+     *  关闭session可以清空一级缓存
      */
     @Test
     public void testFindUserById2(){
@@ -95,6 +95,7 @@ public class UserTest {
 
     /**
      * 测试一级缓存
+     * 一级缓存失效四种情况：2、手动清空了一级缓存。
      * clearCache清空一级缓存
      */
     @Test
@@ -108,11 +109,35 @@ public class UserTest {
         System.out.println(user1 == user2);
     }
 
+    /**
+     * 测试一级缓存
+     * 一级缓存失效四种情况：3、查询条件不同
+     */
     @Test
-    public void testObjects(){
-
-        boolean equals = Objects.equals("A", "B");
-
+    public void testFindUserById4(){
+        User user1 = userDao.findById(41);
+        User user2 = userDao.findById(42);
+        System.out.println(user1);
+        System.out.println(user2);
+        System.out.println(user1 == user2);
     }
+
+    /**
+     * 测试一级缓存
+     * 一级缓存失效四种情况：4、在两次相同查询条件中间执行过增删改操作。(因为中间的增删改可能对缓存中数据进行修改，所以不能用)
+     */
+    @Test
+    public void testFindUserById5(){
+        User user1 = userDao.findById(41);
+        System.out.println(user1);
+        //执行增删改操作
+        user1.setUsername("user11");
+        userDao.updateUser(user1);
+
+        User user2 = userDao.findById(41);
+        System.out.println(user2);
+        System.out.println(user1 == user2);
+    }
+
 
 }

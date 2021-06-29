@@ -6,13 +6,11 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.hamcrest.core.Is;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.InputStream;
-import java.util.List;
 
 public class SecondLeveCacheTest {
 
@@ -62,10 +60,12 @@ public class SecondLeveCacheTest {
 
         SqlSession session2 = factory.openSession();
         IUserDao userDao2 = session2.getMapper(IUserDao.class);
+        //发现只查询了一次数据库
         User user2 = userDao2.findById(41);
         System.out.println(user2);
 
         System.out.println(user1 == user2);
+        System.out.println(user1.equals(user2));
     }
 
 }

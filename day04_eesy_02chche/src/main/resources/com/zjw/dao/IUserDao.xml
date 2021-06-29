@@ -12,12 +12,29 @@
         select * from user ;
     </select>
 
-    <!--根据id查询用户 (查询支持cache)
-        好像开启了cache就不用配置useCache了，默认就是true
+    <!--
+       （1）当为select语句时：
+            flushCache默认为false，表示任何时候语句被调用，都不会去清空本地缓存和二级缓存。
+            开启二级缓存后，useCache默认为true，表示会将本条语句的结果进行二级缓存。
+        （2）当为insert、update、delete语句时：
+
+        flushCache默认为true，表示任何时候语句被调用，都会导致本地缓存和二级缓存被清空。
+
+        useCache属性在该情况下没有。
     -->
     <select id="findById" resultType="User" parameterType="Integer" flushCache="true">
         select * from user u where u.id = #{userId}
     </select>
+
+    <update id="updateUser" parameterType="User">
+        UPDATE user t
+        SET t.address = #{address},
+            t.birthday = #{birthday},
+            t.sex = #{sex},
+            t.username = #{username}
+        WHERE
+            t.id = #{id}
+    </update>
 
 
 </mapper>
