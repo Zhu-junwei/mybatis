@@ -4,6 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!-- mybatis的主配置文件 -->
 <configuration>
+    
+    <settings>
+        <!--是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn。 默认false-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    
     <!--  配置环境  -->
     <environments default="mysql">
         <!-- 配置mysql的环境  -->
