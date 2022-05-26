@@ -15,7 +15,6 @@ import java.io.InputStream;
 public class SecondLeveCacheTest {
 
     private InputStream in ;
-    private SqlSessionFactoryBuilder builder;
     private SqlSessionFactory factory ;
     private SqlSession session ;
     private IUserDao userDao ;
@@ -25,7 +24,7 @@ public class SecondLeveCacheTest {
         //读取配置文件
         in = Resources.getResourceAsStream("SqlMapConfig.xml");
         //创建SqlSessionFactory工厂
-        builder = new SqlSessionFactoryBuilder();
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
         factory = builder.build(in);
 //        //使用工厂生成SqlSession对象
 //        session = factory.openSession();
@@ -60,7 +59,10 @@ public class SecondLeveCacheTest {
 
         SqlSession session2 = factory.openSession();
         IUserDao userDao2 = session2.getMapper(IUserDao.class);
-        //发现只查询了一次数据库
+        /*
+         * 发现只查询了一次数据库 但是两者比较为false
+         * 因为缓存中存放的是数据，不是对象
+         */
         User user2 = userDao2.findById(41);
         System.out.println(user2);
 

@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * 用户的持久层接口
+ * @author 朱俊伟
  */
 public interface IUserDao {
 
@@ -22,6 +23,10 @@ public interface IUserDao {
      */
     void saveUser(User user);
 
+    /**
+     * 保存用户返回id
+     * @param user
+     */
     void saveUserReturnId(User user);
 
     /**
@@ -53,14 +58,14 @@ public interface IUserDao {
 
     /**
      * 根据queryVo中的条件查询用户
-     * @param user
+     * @param queryVo
      * @return
      */
     List<User> findUserByVo(QueryVo queryVo);
 
     /**
      * 查询用户的所有记录数
-     * @return
+     * @return 记录数
      */
     int findTotal();
 }

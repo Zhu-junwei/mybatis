@@ -4,8 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zjw.dao.IUserDao">
 
+    <!--配置查询结果的列名和实体类的属性名的对应关系-->
     <resultMap id="userMap" type="User">
         <id property="userId" column="id"/>
+        <!--使用result标签也可以-->
+        <!--<result property="userId" column="id"/>-->
         <result property="userName" column="username"/>
         <result property="userAddress" column="address"/>
         <result property="userBirthday" column="birthday"/>
@@ -48,10 +51,10 @@
     <!--根据名字模糊查询用户-->
     <select id="findByName" parameterType="String" resultMap="userMap">
         <!--使用的占位符，推荐使用，不过参数要加上%-->
-        <!-- select * from user where username like #{userName};-->
+        select * from user where username like #{userName};
 
         <!--使用的是字符串拼接，参数不用加%，但是会有sql注入问题-->
-        select * from user where username like '%${value}%';
+        <!--select * from user where username like '%${value}%';-->
     </select>
 
     <!--根据queryVo的添加查询用户-->

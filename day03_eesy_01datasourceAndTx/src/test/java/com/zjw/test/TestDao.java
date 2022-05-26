@@ -11,7 +11,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
@@ -19,8 +18,6 @@ import java.util.List;
 public class TestDao {
 
     private InputStream in ;
-    private SqlSessionFactoryBuilder builder;
-    private SqlSessionFactory factory ;
     private SqlSession session ;
     private IUserDao userDao ;
 
@@ -29,8 +26,8 @@ public class TestDao {
         //读取配置文件
         in = Resources.getResourceAsStream("SqlMapConfig.xml");
         //创建SqlSessionFactory工厂
-        builder = new SqlSessionFactoryBuilder();
-        factory = builder.build(in);
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+        SqlSessionFactory factory = builder.build(in);
         //使用工厂生成SqlSession对象
 //        session = factory.openSession();
         session = factory.openSession(true);

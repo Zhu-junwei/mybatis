@@ -20,7 +20,7 @@
         select  * from user;
     </select>
 
-    <!--查询用户-->
+    <!--查询用户 根据用户id查询-->
     <select id="findById" parameterType="Integer" resultType="User">
         select * from user where id = #{userId} ;
     </select>

@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * @author 朱俊伟
+ */
 @Data
 public class Account implements Serializable {
     private Integer id;

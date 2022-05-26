@@ -5,11 +5,10 @@
 <configuration>
     
 
-    <properties resource="jdbcConfig.properties">
-    </properties>
+    <properties resource="jdbcConfig.properties"/>
 
-    <!--开启二级缓存，默认是开启的-->
     <settings>
+        <!--开启二级缓存，默认是开启的-->
         <setting name="cacheEnabled" value="true"/>
     </settings>
     <!--  使用typeAliases配置别名，它只能配置domain中的类的别名  -->

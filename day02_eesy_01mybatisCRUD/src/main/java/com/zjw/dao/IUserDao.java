@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * 用户的持久层接口
+ * @author 朱俊伟
  */
 public interface IUserDao {
 
@@ -22,6 +23,10 @@ public interface IUserDao {
      */
     void saveUser(User user);
 
+    /**
+     * 保存用户返回用户ID
+     * @param user
+     */
     void saveUserReturnId(User user);
 
     /**

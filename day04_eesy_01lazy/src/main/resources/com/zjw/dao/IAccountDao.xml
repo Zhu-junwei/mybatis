@@ -20,9 +20,9 @@
             一对一的关系映射，配置封装User的内容
             select属性指定的内容，查询用户的唯一标识
             column属性指定的内容，用户根据id查询时，所需参数的值
+            fetchType属性指定使用延迟加载还是立即加载，默认是延迟加载lazy
          -->
-        <association property="user" column="uid" javaType="User" select="com.zjw.dao.IUserDao.findById">
-
+        <association property="user" column="uid" javaType="User" select="com.zjw.dao.IUserDao.findById" fetchType="eager">
         </association>
 
 
@@ -43,6 +43,7 @@
         select ac.*,u.address,u.username from account ac ,user u where ac.uid = u.id;
     </select>
 
+    <!--根据用户id查询账户信息-->
     <select id="findAccountByUid" resultType="Account" parameterType="Integer">
         select ac.* from account ac where ac.uid = #{uid};
     </select>

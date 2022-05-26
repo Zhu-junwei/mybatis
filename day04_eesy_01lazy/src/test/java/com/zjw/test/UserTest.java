@@ -47,6 +47,7 @@ public class UserTest {
 
         //使用代理对象执行方法
         List<User> users = userDao.findAll();
+        //观察是否执行了查询账户的sql 没有则使用了延迟加载
 //        for (User user : users) {
 //            System.out.println(user);
 //            List<Account> accounts = user.getAccounts();

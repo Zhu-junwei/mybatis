@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * 在mybatis中针对CRUD一共有四个注解
+ * @author 朱俊伟
  * @Select @Insert @Update @Delete
  */
 public interface IUserDao {

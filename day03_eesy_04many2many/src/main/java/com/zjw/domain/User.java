@@ -6,6 +6,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author 朱俊伟
+ */
 @Data
 public class User implements Serializable {
     private Integer id;
@@ -14,7 +17,9 @@ public class User implements Serializable {
     private String sex;
     private Date birthday;
 
-    //一个用户对应多个角色
+    /**
+     *一个用户对应多个角色
+     */
     private List<Role> roles;
 
 

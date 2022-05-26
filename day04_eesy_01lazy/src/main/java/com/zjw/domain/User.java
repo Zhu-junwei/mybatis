@@ -14,7 +14,9 @@ public class User implements Serializable {
     private String sex;
     private Date birthday;
 
-    //建立一对多的关系
+    /**
+     * 建立一对多的关系
+     */
     private List<Account> accounts;
 
     @Override

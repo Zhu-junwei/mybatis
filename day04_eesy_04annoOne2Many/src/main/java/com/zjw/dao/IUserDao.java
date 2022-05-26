@@ -8,19 +8,17 @@ import java.util.List;
 
 /**
  * 在mybatis中针对CRUD一共有四个注解
+ * @author 朱俊伟
  * @Select @Insert @Update @Delete
  */
-
-//@CacheNamespace(blocking = true)//mybatis 基于注解方式实现配置二级缓存
+//mybatis 基于注解方式实现配置二级缓存
+@CacheNamespace(blocking = true)
 public interface IUserDao {
 
     /**
      * 查询所有用户
      * @return
      */
-
-//    只有一个value需要赋值时，value可以省略
-//    @Select(value = "")
     @Select("select * from user")
     @Results(id = "UserMap" , value = {
                     @Result(id=true,column = "id",property = "userId"),
@@ -29,8 +27,8 @@ public interface IUserDao {
                     @Result(column = "address",property = "userAddress"),
                     @Result(column = "birthday",property = "userBirthday"),
                     @Result(property = "accounts",column = "id",
-                            many = @Many(select ="com.zjw.dao.IAccountDao.findAccountByUid",
-                                        fetchType = FetchType.LAZY))
+                            many = @Many(select ="com.zjw.dao.IAccountDao.findAccountByUid",fetchType = FetchType.LAZY)
+                    )
             }
     )
     List<User> findAll();
@@ -40,10 +38,8 @@ public interface IUserDao {
      * @param id
      * @return
      */
-    @Select("SELECT * FROM user WHERE id=#{id}")
-//    @ResultMap(value = "UserMap")
-//    @ResultMap("UserMap")
-    @ResultMap(value = {"UserMap"})
+    @Select(value = "SELECT * FROM user WHERE id=#{id}")
+    @ResultMap("UserMap")
     User findById(Integer id);
 
     /**
@@ -53,8 +49,6 @@ public interface IUserDao {
      */
     //方法一:传入的name需要加%号
     @Select("SELECT * FROM user WHERE username LIKE #{name}")
-    //方法二:并不需要加%号，防止sql注入
-//    @Select("SELECT * FROM user WHERE username LIKE '%${value}%'")
     @ResultMap(value = {"UserMap"})
     List<User> findByName(String name);
 

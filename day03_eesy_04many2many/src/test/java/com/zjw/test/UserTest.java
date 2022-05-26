@@ -16,8 +16,6 @@ import java.util.List;
 public class UserTest {
 
     private InputStream in ;
-    private SqlSessionFactoryBuilder builder;
-    private SqlSessionFactory factory ;
     private SqlSession session ;
     private IUserDao userDao ;
 
@@ -26,8 +24,8 @@ public class UserTest {
         //读取配置文件
         in = Resources.getResourceAsStream("SqlMapConfig.xml");
         //创建SqlSessionFactory工厂
-        builder = new SqlSessionFactoryBuilder();
-        factory = builder.build(in);
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+        SqlSessionFactory factory = builder.build(in);
         //使用工厂生成SqlSession对象
         session = factory.openSession();
         //使用SqlSession穿过将Dao接口的代理对象

@@ -16,7 +16,6 @@ import java.util.List;
 public class UserTest {
 
     private InputStream in ;
-    private SqlSessionFactoryBuilder builder;
     private SqlSessionFactory factory ;
     private SqlSession session ;
     private IUserDao userDao ;
@@ -26,7 +25,7 @@ public class UserTest {
         //读取配置文件
         in = Resources.getResourceAsStream("SqlMapConfig.xml");
         //创建SqlSessionFactory工厂
-        builder = new SqlSessionFactoryBuilder();
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
         factory = builder.build(in);
         //使用工厂生成SqlSession对象
         session = factory.openSession();
@@ -84,9 +83,7 @@ public class UserTest {
         session.close(); //close可以清空缓存
         session = factory.openSession();
         userDao = session.getMapper(IUserDao.class);
-
-//        session.clearCache();//clearCache也可以清空缓存
-
+        //发现再次执行的sql查询操作 一级缓存失效
         User user2 = userDao.findById(41);
         System.out.println(user1);
         System.out.println(user2);
@@ -101,7 +98,8 @@ public class UserTest {
     @Test
     public void testFindUserById3(){
         User user1 = userDao.findById(41);
-        session.clearCache();//clearCache也可以清空缓存
+        //clearCache也可以清空一级缓存
+        session.clearCache();
 
         User user2 = userDao.findById(41);
         System.out.println(user1);
@@ -117,9 +115,12 @@ public class UserTest {
     public void testFindUserById4(){
         User user1 = userDao.findById(41);
         User user2 = userDao.findById(42);
+        User user3 = userDao.findById(41);
         System.out.println(user1);
         System.out.println(user2);
-        System.out.println(user1 == user2);
+        System.out.println(user3);
+        System.out.println(user1 == user2);//false
+        System.out.println(user1 == user3);//false
     }
 
     /**
@@ -133,7 +134,7 @@ public class UserTest {
         //执行增删改操作
         user1.setUsername("user11");
         userDao.updateUser(user1);
-
+        //发现查询sql执行了两次
         User user2 = userDao.findById(41);
         System.out.println(user2);
         System.out.println(user1 == user2);

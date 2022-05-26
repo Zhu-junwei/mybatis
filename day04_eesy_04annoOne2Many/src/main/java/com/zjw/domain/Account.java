@@ -2,12 +2,17 @@ package com.zjw.domain;
 
 import java.io.Serializable;
 
+/**
+ * @author 朱俊伟
+ */
 public class Account implements Serializable {
     private Integer id;
     private Integer uid;
     private Double money;
 
-    //多对一（mybatis中称为一对一）的映射：一个账户只能属于一个用户
+    /**
+     *多对一（mybatis中称为一对一）的映射：一个账户只能属于一个用户
+     */
     private User user;
 
     @Override

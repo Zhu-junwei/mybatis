@@ -42,19 +42,18 @@ public class SecondLevelCatchTest {
     public void testFindById(){
         //第一次查询数据库
         User user = userDao.findById(41);
-//        System.out.println(user.toString());
+        System.out.println(user);
 
         session.close();
-        session = factory.openSession();
-        IUserDao userDao = session.getMapper(IUserDao.class);
-        //第二次用cache中取值
+        SqlSession session2 = factory.openSession();
+        IUserDao userDao = session2.getMapper(IUserDao.class);
+        //第二次从cache中取值
         User user2 = userDao.findById(41);
-//        System.out.println(user2.toString());
+        System.out.println(user2);
 
 //        System.out.println(user == user2);
 
-        session.commit();
-        session.close();
+        session2.close();
 
     }
 

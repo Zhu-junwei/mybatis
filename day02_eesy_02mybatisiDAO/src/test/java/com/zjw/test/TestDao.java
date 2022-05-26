@@ -4,7 +4,6 @@ import com.zjw.dao.IUserDao;
 import com.zjw.dao.impl.UserDaoImpl;
 import com.zjw.domain.User;
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
@@ -19,9 +18,6 @@ import java.util.List;
 public class TestDao {
 
     private InputStream in ;
-    private SqlSessionFactoryBuilder builder;
-    private SqlSessionFactory factory ;
-    private SqlSession session ;
     private IUserDao userDao ;
 
     @Before
@@ -29,8 +25,8 @@ public class TestDao {
         //读取配置文件
         in = Resources.getResourceAsStream("SqlMapConfig.xml");
         //创建SqlSessionFactory工厂
-        builder = new SqlSessionFactoryBuilder();
-        factory = builder.build(in);
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+        SqlSessionFactory factory = builder.build(in);
         //使用工厂生成dao对象
         userDao = new UserDaoImpl(factory);
     }
@@ -83,7 +79,11 @@ public class TestDao {
         user.setBirthday(new Date());
         user.setSex("男");
 
-        userDao.saveUser(user);
+        //保存前打印用户信息，没有id
+        System.out.println(user);
+        userDao.saveUserReturnId(user);
+        //保存后打印用户信息，id已赋值
+        System.out.println(user);
     }
 
     /**
@@ -114,7 +114,7 @@ public class TestDao {
      * 测试查询用户
      */
     @Test
-    public void testfindById(){
+    public void testFindById(){
         User user = userDao.findById(50);
         System.out.println(user);
     }

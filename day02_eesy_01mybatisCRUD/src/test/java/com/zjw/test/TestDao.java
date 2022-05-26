@@ -3,7 +3,6 @@ package com.zjw.test;
 import com.zjw.dao.IUserDao;
 import com.zjw.domain.QueryVo;
 import com.zjw.domain.User;
-import org.apache.ibatis.io.DefaultVFS;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -20,8 +19,6 @@ import java.util.List;
 public class TestDao {
 
     private InputStream in ;
-    private SqlSessionFactoryBuilder builder;
-    private SqlSessionFactory factory ;
     private SqlSession session ;
     private IUserDao userDao ;
 
@@ -30,8 +27,8 @@ public class TestDao {
         //读取配置文件
         in = Resources.getResourceAsStream("SqlMapConfig.xml");
         //创建SqlSessionFactory工厂
-        builder = new SqlSessionFactoryBuilder();
-        factory = builder.build(in);
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+        SqlSessionFactory factory = builder.build(in);
         //使用工厂生成SqlSession对象
         session = factory.openSession();
         //使用SqlSession穿过将Dao接口的代理对象
@@ -67,7 +64,7 @@ public class TestDao {
     public void testSaveUser(){
 
         User user = new User();
-        user.setUserName("朱俊伟1231231232");
+        user.setUserName("Name_231232");
         user.setUserAddress("河南");
         user.setUserBirthday(new Date());
         user.setUserSex("男");
@@ -77,7 +74,6 @@ public class TestDao {
 
     /**
      * 测试保存返回id操作
-     * @throws IOException
      */
     @Test
     public void testSaveUserReturnId(){
@@ -102,7 +98,7 @@ public class TestDao {
         User user = new User();
         user.setUserId(50);
         user.setUserName("朱俊伟");
-        user.setUserAddress("河南11111111");
+        user.setUserAddress("河南"+Math.random());
         user.setUserBirthday(new Date());
         user.setUserSex("男");
 
@@ -114,7 +110,7 @@ public class TestDao {
      */
     @Test
     public void testDeleteUser(){
-        userDao.deleteUser(48);
+        userDao.deleteUser(85);
     }
 
     /**
@@ -122,7 +118,7 @@ public class TestDao {
      */
     @Test
     public void testFindById(){
-        User user = userDao.findById(59);
+        User user = userDao.findById(50);
         System.out.println(user);
     }
 
@@ -131,13 +127,19 @@ public class TestDao {
      */
     @Test
     public void testFindByName(){
-        //使用#{} , 需要加%
+        /*
+         * 使用#{} , 需要加% 推荐使用
+         * select * from user where username like ?;
+         */
         List<User> userList = userDao.findByName("%王%");
 
         //使用${} , 不用加% 有sql注入的风险
 //        List<User> userList = userDao.findByName("王");
-        //SQL注入
-//        List<User> userList = userDao.findByName("王%' or '1%' = '1");
+
+        /*
+         * SQL注入 select * from user where username like '%张%' or '1%' = '1%'
+         */
+//        List<User> userList = userDao.findByName("张%' or '1%' = '1");
         for (User user : userList) {
             System.out.println(user);
         }

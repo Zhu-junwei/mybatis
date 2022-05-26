@@ -11,6 +11,7 @@
         <result property="sex" column="sex"/>
         <result property="birthday" column="birthday"/>
 
+        <!--配置user对象中accounts集合的映射 ofType:集合中元素的类型-->
         <collection property="accounts" ofType="Account">
             <id property="id" column="aid"/>
             <result property="uid" column="uid"/>
@@ -20,7 +21,13 @@
     
     <!--查询所有-->
     <select id="findAll"  resultMap="UserAccountMap">
-        select  u.*,a.id aid,a.uid uid,a.money from user u LEFT JOIN account a ON u.id = a.uid;
+        select  u.*,
+               a.id aid,
+               a.uid,
+               a.money
+        from user u
+            LEFT JOIN account a
+                ON u.id = a.uid;
     </select>
 
     <!--查询用户-->

@@ -1,11 +1,15 @@
 package com.zjw.domain;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
 
-@Data
+/**
+ * @author 朱俊伟
+ */
+@Getter @Setter
 public class User implements Serializable{
 
     private Integer id;

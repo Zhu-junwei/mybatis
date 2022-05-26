@@ -102,7 +102,7 @@ public class TestDao {
     public void testFindByCondition(){
         User user = new User();
         user.setUserName("老王");
-        user.setUserSex("女");
+        user.setUserSex("男");
         List<User> userList = userDao.findUserByCondition(user);
         for (User u : userList) {
             System.out.println(u);

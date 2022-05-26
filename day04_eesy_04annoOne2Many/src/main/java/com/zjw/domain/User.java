@@ -1,9 +1,16 @@
 package com.zjw.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author 朱俊伟
+ */
+@Getter @Setter
 public class User implements Serializable {
 
     private Integer userId;
@@ -12,7 +19,9 @@ public class User implements Serializable {
     private String userSex;
     private Date userBirthday;
 
-    //一对多关系映射：一个用户对应多个账户
+    /**
+     * 一对多关系映射：一个用户对应多个账户
+     */
     private List<Account> accounts ;
 
     @Override

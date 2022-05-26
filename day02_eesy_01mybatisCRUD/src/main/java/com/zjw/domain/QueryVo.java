@@ -1,14 +1,14 @@
 package com.zjw.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
+/**
+ * @author 朱俊伟
+ */
+@Getter @Setter
 public class QueryVo {
 
     private User user;
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

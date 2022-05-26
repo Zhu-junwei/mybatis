@@ -33,7 +33,7 @@ public interface IUserDao {
 
     /**
      * 根据queryVo中的条件查询用户
-     * @param user
+     * @param queryVo
      * @return
      */
     List<User> findUserByVo(QueryVo queryVo);

@@ -6,6 +6,9 @@ import org.apache.ibatis.mapping.FetchType;
 
 import java.util.List;
 
+/**
+ * @author 朱俊伟
+ */
 public interface IAccountDao {
 
     /**

@@ -1,8 +1,12 @@
 package com.zjw.domain;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+/**
+ * @author 朱俊伟
+ */
+@Getter @Setter
 public class AccountUser extends Account {
     private String address ;
     private String username;

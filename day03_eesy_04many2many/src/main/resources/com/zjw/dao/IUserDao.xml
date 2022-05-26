@@ -23,7 +23,7 @@
     <select id="findAll"  resultMap="UserAccountMap">
         SELECT
             u.*,
-            r.id rid,
+            r.id as rid,
             r.role_name,
             r.role_desc
         FROM

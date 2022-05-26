@@ -18,14 +18,13 @@ import java.util.List;
 public class AnnotationCRUDTest {
 
     private InputStream in ;
-    private SqlSessionFactory factory ;
     private SqlSession session ;
     private IUserDao userDao ;
 
     @Before
     public void init() throws IOException {
         in = Resources.getResourceAsStream("SqlMapConfig.xml");
-        factory = new SqlSessionFactoryBuilder().build(in);
+        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
         session = factory.openSession();
         userDao = session.getMapper(IUserDao.class);
     }

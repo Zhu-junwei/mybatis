@@ -22,8 +22,8 @@
     <!--查询所有-->
     <select id="findAll"  resultMap="RoleMap">
             SELECT
-                r.id rid,
-                r.ROLE_NAME role_name,
+                r.id AS rid,
+                r.ROLE_NAME AS role_name,
                 r.role_desc,
                 u.*
             FROM

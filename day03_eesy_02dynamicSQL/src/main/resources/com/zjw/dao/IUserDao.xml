@@ -12,9 +12,14 @@
         <result property="userSex" column="sex"/>
     </resultMap>
 
+    <sql id="defaultUser">
+        select * from user;
+    </sql>
+
     <!--查询所有-->
     <select id="findAll"  resultMap="userMap">
-        select  * from user;
+        <!--引入id为defaultUser的sql语句 -->
+        <include refid="defaultUser" />
     </select>
 
     <!--查询用户-->
@@ -62,7 +67,14 @@
 
     </select>
 
-    <!--根据传入的id集合查询用户信息-->
+    <!--根据传入的id集合查询用户信息 foreach标签的使用
+        foreach标签：用于遍历集合
+          collection: 代表遍历的集合元素，注意编写时不要写#{}
+          open：代表语句的开始部分
+          close：代表语句结束部分
+          item：代表遍历集合的每个元素，生成的变量名
+          separator：代表分隔符
+    -->
     <select id="findUserByInIds" parameterType="QueryVo" resultMap="userMap">
         select * from user
         <where>

@@ -1,9 +1,7 @@
 package com.zjw.test;
 
 import com.zjw.dao.IAccountDao;
-import com.zjw.dao.IUserDao;
 import com.zjw.domain.Account;
-import com.zjw.domain.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -19,14 +17,13 @@ import java.util.List;
 public class AccountTest {
 
     private InputStream in ;
-    private SqlSessionFactory factory ;
     private SqlSession session ;
     private IAccountDao accountDao;
 
     @Before
     public void init() throws IOException {
         in = Resources.getResourceAsStream("SqlMapConfig.xml");
-        factory = new SqlSessionFactoryBuilder().build(in);
+        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
         session = factory.openSession();
         accountDao = session.getMapper(IAccountDao.class);
     }

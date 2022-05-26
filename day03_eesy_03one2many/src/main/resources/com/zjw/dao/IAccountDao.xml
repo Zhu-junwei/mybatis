@@ -9,7 +9,10 @@
         <result property="uid" column="uid"/>
         <result property="money" column="money"/>
 
-        <association property="user" javaType="User">
+        <!--一对一的关系映射，配置封装user的内容-->
+        <!--<association property="user" javaType="User">-->
+        <!--<association property="user" column="uid">-->
+        <association property="user">
             <id property="id" column="id"/>
             <result property="username" column="username"/>
             <result property="address" column="address"/>
@@ -33,7 +36,13 @@
 
     <!--查询所有账户同时包含用户地址和名字-->
     <select id="findAllAccount"  resultType="AccountUser">
-        select ac.*,u.address,u.username from account ac ,user u where ac.uid = u.id;
+        select
+               ac.*,
+               u.address,
+               u.username
+        from account ac ,
+             user u
+        where ac.uid = u.id;
     </select>
 
 

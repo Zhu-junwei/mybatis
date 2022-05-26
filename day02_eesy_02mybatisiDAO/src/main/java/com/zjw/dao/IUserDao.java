@@ -21,6 +21,10 @@ public interface IUserDao {
      */
     void saveUser(User user);
 
+    /**
+     * 保存用户返回用户ID
+     * @param user
+     */
     void saveUserReturnId(User user);
 
     /**

@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * 用户的持久层接口
+ * @author 朱俊伟
  */
 public interface IUserDao {
 
