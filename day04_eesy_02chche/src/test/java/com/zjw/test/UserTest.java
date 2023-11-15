@@ -63,12 +63,13 @@ public class UserTest {
      */
     @Test
     public void testFindUserById(){
+        // id一样，只查询一次数据库，因为一个session
         User user1 = userDao.findById(41);
         User user2 = userDao.findById(41);
 
         System.out.println(user1);
         System.out.println(user2);
-        System.out.println(user1 == user2);
+        System.out.println(user1 == user2);//true
     }
 
     /**
@@ -87,7 +88,7 @@ public class UserTest {
         User user2 = userDao.findById(41);
         System.out.println(user1);
         System.out.println(user2);
-        System.out.println(user1 == user2);
+        System.out.println(user1 == user2);//false
     }
 
     /**
@@ -104,7 +105,7 @@ public class UserTest {
         User user2 = userDao.findById(41);
         System.out.println(user1);
         System.out.println(user2);
-        System.out.println(user1 == user2);
+        System.out.println(user1 == user2);//false
     }
 
     /**
@@ -120,7 +121,7 @@ public class UserTest {
         System.out.println(user2);
         System.out.println(user3);
         System.out.println(user1 == user2);//false
-        System.out.println(user1 == user3);//false
+        System.out.println(user1 == user3);//true
     }
 
     /**
@@ -137,7 +138,7 @@ public class UserTest {
         //发现查询sql执行了两次
         User user2 = userDao.findById(41);
         System.out.println(user2);
-        System.out.println(user1 == user2);
+        System.out.println(user1 == user2);//false
     }
 
 

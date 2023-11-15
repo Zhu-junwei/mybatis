@@ -3,7 +3,6 @@ package com.zjw.test;
 import com.zjw.dao.IAccountDao;
 import com.zjw.dao.IUserDao;
 import com.zjw.domain.Account;
-import com.zjw.domain.AccountUser;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -58,19 +57,6 @@ public class AccountTest {
             System.out.println(account.getUid());
             System.out.println(account.getMoney());
 //            System.out.println(account.getUser());
-        }
-    }
-
-    /**
-     * 查询所有账户同时包含用户地址和名字
-     */
-    @Test
-    public void testFindAllAccount(){
-
-        //使用代理对象执行方法
-        List<AccountUser> accountUsers = accountDao.findAllAccount();
-        for (AccountUser accountUser : accountUsers) {
-            System.out.println(accountUser);
         }
     }
 

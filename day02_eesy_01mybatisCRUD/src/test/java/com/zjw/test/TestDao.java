@@ -110,7 +110,7 @@ public class TestDao {
      */
     @Test
     public void testDeleteUser(){
-        userDao.deleteUser(85);
+        userDao.deleteUser(94);
     }
 
     /**

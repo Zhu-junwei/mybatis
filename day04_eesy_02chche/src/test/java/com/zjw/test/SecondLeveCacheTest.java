@@ -66,8 +66,8 @@ public class SecondLeveCacheTest {
         User user2 = userDao2.findById(41);
         System.out.println(user2);
 
-        System.out.println(user1 == user2);
-        System.out.println(user1.equals(user2));
+        System.out.println(user1 == user2);//false,不是一个对象
+        System.out.println(user1.equals(user2));//true，但是对象的属性值是一样的
     }
 
 }

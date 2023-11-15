@@ -8,14 +8,12 @@
         <id property="roleId" column="rid"/>
         <result property="roleName" column="role_name"/>
         <result property="roleDesc" column="role_desc"/>
-
         <collection property="users" ofType="user">
             <id property="id" column="id"/>
             <result property="address" column="address"/>
             <result property="username" column="username"/>
             <result property="sex" column="sex"/>
             <result property="birthday" column="birthday"/>
-
         </collection>
     </resultMap>
     

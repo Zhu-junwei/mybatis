@@ -6,7 +6,8 @@ import lombok.Setter;
 /**
  * @author 朱俊伟
  */
-@Getter @Setter
+@Getter
+@Setter
 public class QueryVo {
 
     private User user;

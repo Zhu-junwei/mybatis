@@ -27,7 +27,7 @@
 
     <!--保存用户后返回id-->
     <insert id="saveUserReturnId" parameterType="com.zjw.domain.User">
-        <selectKey keyProperty="userId" keyColumn="id" order="AFTER" resultType="int">
+        <selectKey keyProperty="userId" keyColumn="id" order="AFTER" resultType="Integer">
             select LAST_INSERT_ID();
         </selectKey>
         insert into user(username,address,birthday,sex) values (#{userName},#{userAddress},#{userBirthday},#{userSex}) ;
@@ -39,12 +39,12 @@
     </update>
 
     <!--删除用户-->
-    <delete id="deleteUser" parameterType="int">
+    <delete id="deleteUser" parameterType="INTEGER">
         delete from user where id = #{userId};
     </delete>
 
     <!--查询用户-->
-    <select id="findById" parameterType="INTEGER" resultMap="userMap">
+    <select id="findById" parameterType="Integer" resultMap="userMap">
         select * from user where id = #{userId} ;
     </select>
 

@@ -10,11 +10,11 @@
 
     <!--版本定义-->
     <properties>
-        <mybatis-version>3.5.10</mybatis-version>
-        <mysql-version>8.0.29</mysql-version>
+        <mybatis-version>3.5.13</mybatis-version>
+        <mysql-version>8.0.33</mysql-version>
         <log4j-version>1.2.17</log4j-version>
-        <lombok-version>1.18.24</lombok-version>
-        <junit-version>4.10</junit-version>
+        <lombok-version>1.18.30</lombok-version>
+        <junit-version>4.13.2</junit-version>
     </properties>
 
     <dependencies>

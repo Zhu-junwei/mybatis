@@ -1,8 +1,6 @@
 package com.zjw.domain;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -10,8 +8,7 @@ import java.util.Date;
 /**
  * @author 朱俊伟
  */
-@Getter @Setter
-@ToString
+@Data
 public class User implements Serializable {
 
     /**

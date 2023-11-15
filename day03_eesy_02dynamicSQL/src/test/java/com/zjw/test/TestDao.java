@@ -30,7 +30,7 @@ public class TestDao {
         SqlSessionFactory factory = builder.build(in);
         //使用工厂生成SqlSession对象
         session = factory.openSession();
-        //使用SqlSession穿过将Dao接口的代理对象
+        //使用SqlSession创建Dao接口的代理对象
         userDao = session.getMapper(IUserDao.class);
     }
 
