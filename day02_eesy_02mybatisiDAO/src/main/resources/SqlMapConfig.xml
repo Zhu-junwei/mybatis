@@ -12,7 +12,8 @@
             <!--     配置连接池       -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/eesy?serverTimezone=Asia/Shanghai&amp;useSSL=false"/>
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/eesy?serverTimezone=Asia/Shanghai&amp;useSSL=false"/>
                 <property name="username" value="root"/>
                 <property name="password" value="123456"/>
             </dataSource>
@@ -21,6 +22,6 @@
 
     <!--  配置映射文件的位置  -->
     <mappers>
-        <mapper resource="com/zjw/dao/IUserDao.xml" />
+        <mapper resource="com/zjw/dao/IUserDao.xml"/>
     </mappers>
 </configuration>

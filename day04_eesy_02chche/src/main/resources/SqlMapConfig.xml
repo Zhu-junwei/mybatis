@@ -8,7 +8,7 @@
     <properties resource="jdbcConfig.properties"/>
 
     <settings>
-        <!--开启二级缓存，默认是开启的-->
+        <!--全局性地开启或关闭所有映射器配置文件中已配置的任何缓存。默认是开启的。如果要开启二级缓存，此配置需要是true-->
         <setting name="cacheEnabled" value="true"/>
     </settings>
     <!--  使用typeAliases配置别名，它只能配置domain中的类的别名  -->
